@@ -4,6 +4,8 @@ import me.ender.timer.Timer;
 
 import java.util.Date;
 
+import de.newsh.TelegramHandler;
+
 public class TimerWdg extends Widget {
 
     static Tex bg = Resource.loadtex("gfx/hud/bosq");
@@ -90,12 +92,15 @@ public class TimerWdg extends Widget {
     public void wdgmsg(Widget sender, String msg, Object... args) {
 	if(sender == start) {
 	    timer.start();
+		TelegramHandler.updateTimerBot(timer.getName(), timer.getDuration(),true);
 	    updbtns();
 	} else if(sender == stop) {
 	    timer.stop();
+		TelegramHandler.updateTimerBot(timer.getName(), timer.getDuration(),true);
 	    updbtns();
 	} else if(sender == delete) {
 	    timer.destroy();
+		TelegramHandler.updateTimerBot(timer.getName(), timer.getDuration(),true);
 	    ui.destroy(this);
 	} else {
 	    super.wdgmsg(sender, msg, args);

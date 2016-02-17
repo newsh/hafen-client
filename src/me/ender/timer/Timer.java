@@ -75,6 +75,10 @@ public class Timer {
 	this.name = name;
     }
 
+    public synchronized long getDuration() {
+    	return duration;
+    }
+    
     public synchronized long getFinishDate() {
 	return (long) (duration + local - (server - start) / SERVER_RATIO);
     }
