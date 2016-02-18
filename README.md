@@ -1,4 +1,4 @@
-# Telegram Chatbot for Timers in Ender's Client
+# Chatbot integration for Timers in Ender's Client
 
 Get notifications for finished timers and current progress via Telegram Chat Bot.<br>
 Telegram messenger is available on <a href="https://telegram.org/">mobile and desktop</a>.
