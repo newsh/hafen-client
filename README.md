@@ -15,8 +15,8 @@ Telegram messenger is available on <a href="https://telegram.org/">mobile and de
 
 5. Done!
 <br><br>
-ProTip: Add @BrodgarBot to your group chat and share the same timers with your village mates! <br>
-<i>Note: </i>chatIDs for group chats start with "-" 
+ProTip: Add @BrodgarBot to your group chat and share the same timers with your village mates! Be sure group chatId starts with "-"<br>
+<i>Note: Timers will be sent out with maximum offset of +/- 1 minute
 
 # Preview
 <img src="http://i.imgur.com/iNu8fn9.png?1"/>
