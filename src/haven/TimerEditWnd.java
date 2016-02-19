@@ -3,6 +3,7 @@ package haven;
 
 import java.awt.event.KeyEvent;
 import java.util.List;
+import de.newsh.TelegramHandler;
 
 public class TimerEditWnd extends Window {
 
@@ -44,6 +45,7 @@ public class TimerEditWnd extends Window {
             add = new Button(60, "Save") {
                 @Override
                 public void click() {
+                	TelegramHandler.updateTimerBot(timername,duration,false); // delete old timer before updating	
                     if (timer.active)
                         timer.stop();
                     timer.name = txtname.text;

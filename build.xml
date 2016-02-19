@@ -31,6 +31,11 @@
 	<pathelement path="lib/jnlp.jar" />
     <pathelement path="lib/jsoup-1.8.3.jar" />
 	<pathelement path="lib/jglob.jar" />
+	<pathelement path="lib/gson-2.3.1.jar" />
+    <pathelement path="lib/apache-httpcomponents-httpclient.jar" />
+   	<pathelement path="lib/apache-httpcomponents-httpcore.jar" />
+    <pathelement path="lib/org.apache.commons.httpclient.jar" />
+    <pathelement path="lib/commons-logging-1.2.jar" />
       </classpath>
       <compilerarg value="-Xlint:unchecked" />
       <compilerarg value="-Xlint:-options" />
@@ -45,6 +50,8 @@
     <copy todir="build/classes/haven" file="etc/res-preload" />
     <copy todir="build/classes/haven" file="etc/res-bgload" />
     <copy todir="build/classes/haven" file="etc/icon.png" />
+    <copy todir="build" file="etc/telegramBot.json" />
+
   </target>
 
   <target name="lib-classes" depends="build-env" unless="unpacked-lib">
@@ -55,6 +62,22 @@
     <unjar src="lib/jsoup-1.8.3.jar" dest="build/classes-lib">
       <patternset excludes="META-INF/**" />
     </unjar>
+    <unjar src="lib/gson-2.3.1.jar" dest="build/classes-lib">
+       <patternset excludes="META-INF/**" />
+     </unjar>
+     <unjar src="lib/apache-httpcomponents-httpclient.jar" dest="build/classes-lib">
+       <patternset excludes="META-INF/**" />
+     </unjar>
+      <unjar src="lib/apache-httpcomponents-httpcore.jar" dest="build/classes-lib">
+ 		<patternset excludes="META-INF/**" />
+      </unjar>
+     <unjar src="lib/org.apache.commons.httpclient.jar" dest="build/classes-lib">
+       <patternset excludes="META-INF/**" />
+     </unjar>
+     <unjar src="lib/commons-logging-1.2.jar" dest="build/classes-lib">
+       <patternset excludes="META-INF/**" />
+     </unjar>
+
   </target>
 
   <target name="jar" depends="hafen-client,buildinfo,lib-classes">

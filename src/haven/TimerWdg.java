@@ -2,6 +2,7 @@ package haven;
 
 
 import java.util.List;
+import de.newsh.TelegramHandler;
 
 public class TimerWdg extends Widget {
     public static final Text.Foundry foundry = new Text.Foundry(Text.sansb, 12).aa(true);
@@ -41,7 +42,7 @@ public class TimerWdg extends Widget {
         btndel = new Button(20, "X") {
             @Override
             public void click() {
-                delete();
+            delete();
             }
         };
         btnedit = new Button(50, "Edit") {
@@ -93,6 +94,8 @@ public class TimerWdg extends Widget {
         btnstop.show();
         active = true;
         Glob.timersThread.save();
+		TelegramHandler.updateTimerBot(name,duration,true);
+
     }
 
     public void start(long start) {
@@ -100,27 +103,30 @@ public class TimerWdg extends Widget {
         btnstart.hide();
         btnstop.show();
         active = true;
+
     }
 
     public void delete() {
-        active = false;
-        Glob.timersThread.remove(this);
-        reqdestroy();
-        int y = this.c.y;
-        List<TimerWdg> timers = Glob.timersThread.getall();
-        for (TimerWdg timer : timers) {
-            if (timer.c.y > y)
-                timer.c.y -= height;
-        }
-        parent.resize(TimersWnd.width, timers.size() * TimerWdg.height + 60);
-        Glob.timersThread.save();
-    }
+	    active = false;
+	    Glob.timersThread.remove(this);
+	    reqdestroy();
+	    int y = this.c.y;
+	    List<TimerWdg> timers = Glob.timersThread.getall();
+	    for (TimerWdg timer : timers) {
+	        if (timer.c.y > y)
+	            timer.c.y -= height;
+	    }
+	    parent.resize(TimersWnd.width, timers.size() * TimerWdg.height + 60);
+	    Glob.timersThread.save();
+	    TelegramHandler.updateTimerBot(name,duration,false);
+	}
 
     public void stop() {
         active = false;
         btnstart.show();
         btnstop.hide();
         updateDuration();
+		TelegramHandler.updateTimerBot(name,duration,false);
     }
 
     public void done() {
